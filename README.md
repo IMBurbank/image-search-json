@@ -11,11 +11,11 @@ Use this microservice to retrieve image search results in json. The six availabl
 
 ### How To Use
 
-Append your search query parameters to the end of the API search endpoint `https://img-find.glitch.me/search?`  with all parameters separated by the symbol `&`.
+Append your search query parameters to the end of the API search endpoint `https://img-find.glitch.me/search?`  with all parameters separated by the symbol `&`. The most recent searches can be retreived in json format from the API endpoint `https://img-find.glitch.me/latest`. Latest default is 10 most recent results. The `num` query can be used to return retween 1 and all available results.
 
 **Example Query**
 
-`https://img-find.glitch.me/search?offset=2&q=fancy penguins&size=large`
+* `https://img-find.glitch.me/search?offset=2&q=fancy penguins&size=large`
 
 **Example Output**
 
@@ -32,6 +32,25 @@ Append your search query parameters to the end of the API search endpoint `https
       "url": "http://thestuffinthemargin.files.wordpress ...",
       "thumbnail": "https://encrypted-tbn0.gstatic.com/ ...",
       "context": "http://krackerartsuite.blogspot.com/"
+    }
+  ]
+```
+
+**Example Latest**
+
+* `https://img-find.glitch.me/latest?num=2`
+
+**Example Output**
+
+```
+  [
+    {
+      "term": "99 baloons",
+      "when": "2017-08-06T06:05:41.634Z"
+    },
+    {
+      "term": "funny bunnies",
+      "when": "2017-08-06T05:59:35.021Z"
     }
   ]
 ```
