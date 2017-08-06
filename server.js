@@ -86,7 +86,7 @@ app.get('/latest', async (req, res) => {
     const latestSearches = await collection.find().limit(num).sort({ when: -1 }).toArray();
 
     res.set({ 'Content-Type': 'application/json' });
-    res.send(JSON.stringify(latestSearches, storeKeys));
+    res.send(JSON.stringify(latestSearches, storeKeys, '  '));
   }
   catch(err) { console.log(err), res.end(err) }
 });
