@@ -41,7 +41,7 @@
         <p>
           Append your search query parameters to the end of the API search
           endpoint <span class="short-code">https://img-find.glitch.me/search?</span> 
-          with all parameters separated by the symbol <span class="short-code">`&`</span>.
+          with all parameters separated by the symbol <span class="short-code">&</span>.
           The most recent searches can be retreived in json format from the API endpoint 
           <span class="short-code">https://img-find.glitch.me/latest</span>. Latest default 
           is 10 most recent results. The <span class="short-code">num</span> query can
@@ -50,13 +50,13 @@
         <p class="bold">Example Query</p>
         <p>
           <span class="short-code">
-            https://img-find.glitch.me/search?offset=2&q=fancy penguins&size=large
+            https://img-find.glitch.me/search?num=2&q=fancy penguins&size=large
           </span>
         </p>
         <p class="bold">Example Output</p>
         <p>
           <span>            
-<pre>  [
+<pre class="short-code">  [
     {
       "snippet": "Penguin cartoon – penguins at a fancy dress ...",
       "url": "http://www.chrismadden.co.uk/images/cartoons ...",
@@ -81,7 +81,7 @@
         <p class="bold">Example Output</p>
         <p>
           <span>            
-<pre>  [
+<pre class="short-code">  [
     {
       "term": "99 baloons",
       "when": "2017-08-06T06:05:41.634Z"
