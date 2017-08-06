@@ -69,6 +69,7 @@ app.get('/search', async (req, res) => {
     });
     
     newSearch = { [storeKeys[0]]: query.q, [storeKeys[1]]: new Date().toISOString() };
+    
     collection.insert(newSearch);
     res.set({ 'Content-Type': 'application/json' });
     res.send(JSON.stringify(json, null, '  '));

@@ -15,7 +15,7 @@ Append your search query parameters to the end of the API search endpoint `https
 
 **Example Query**
 
-* `https://img-find.glitch.me/search?offset=2&q=fancy penguins&size=large`
+* `https://img-find.glitch.me/search?num=2&q=fancy penguins&size=large`
 
 **Example Output**
 
