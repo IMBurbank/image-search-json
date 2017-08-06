@@ -1,26 +1,38 @@
 // client-side js
-// run by the browser each time your view template is loaded
+// run by the browser each time view template is loaded
 
-// by default, you've got jQuery,
-// add other scripts at the bottom of index.html
 
-$(function() {
-  console.log('hello world :o');
+(function() {
+  var baseUrl = 'https://img-find.glitch.me/search?',
+      output = document.getElementById('output'),
+      request = document.getElementById('request'),
+      topInput = document.getElementById('input-q'),
+      queryKeyMap;
   
-  $.get('/dreams', function(dreams) {
-    dreams.forEach(function(dream) {
-      $('<li></li>').text(dream).appendTo('ul#dreams');
-    });
+  fetch('/queryKeyMap').then( function(response) {
+    return response.json();
+  }).then( function(json) {
+    queryKeyMap = json;
   });
-
-  $('form').submit(function(event) {
+  
+  topInput.focus();
+  
+  document.getElementById('search-form').onsubmit = function(event) {
     event.preventDefault();
-    var dream = $('input').val();
-    $.post('/dreams?' + $.param({dream: dream}), function() {
-      $('<li></li>').text(dream).appendTo('ul#dreams');
-      $('input').val('');
-      $('input').focus();
+    
+    var query = Object.keys(queryKeyMap).reduce( function(queryStr, key) {
+      return event.target['input-' + key].value ? 
+        queryStr + key + '=' + event.target['input-' + key].value + '&' : 
+        queryStr;
+    }, '');
+      
+    fetch('/search?' + query).then( function(response) {
+      return response.json();
+    }).then( function(json) {
+      request.innerText = baseUrl + query;
+      output.innerHTML = '<pre>' + JSON.stringify(json, null, '  ') + '</pre>';
+      topInput.value = '';
+      topInput.focus();
     });
-  });
-
-});
+  }
+}());

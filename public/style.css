@@ -1,8 +1,5 @@
 /* styles */
-/* called by your view template */
 
-/* You might want to try something fancier: */
-/* less: http://lesscss.org/ */
 
 * {
   box-sizing: border-box;
@@ -15,56 +12,67 @@ body {
 
 h1 {
   font-weight: bold;
-  color: pink;
+  text-decoration: underline;
 }
 
-.bold {
+h3 {
   font-weight: bold;
+  margin: 1.25em 0 .5em 0;
+}
+
+h1, h3, .bold {
+  color: #068799;
 }
 
 p {
   max-width: 600px;
+  margin: 0 0 .25em 1em;
+  font-size: .9rem;
+}
+
+pre {
+  max-width: 600px;
+  min-width: 500px;
 }
 
 form {
   margin-bottom: 25px;
   padding: 15px;
-  background-color: cyan;
+  background-color: #fffdea;
   display: inline-block;
   width: 100%;
-  max-width: 340px;
+  max-width: 600px;
+  min-width: 500px;
   border-radius: 3px;
 }
 
 input {
-  display: block;
-  margin-bottom: 10px;
+  display: inline-block;
+  margin: 5px 10px;
   padding: 5px;
-  width: 100%;
   border: 1px solid lightgrey;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: .9rem;
 }
 
 button {
+  margin: 5px 2px 2px 0;
   font-size: 16px;
   border-radius: 3px;
-  background-color: lightgrey;
+  background-color: #0970b5;
   border: 1px solid grey;
-  box-shadow: 2px 2px teal;
+  box-shadow: 2px 2px #02406d;
+  color: white;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: yellow;
+  background-color: #1e8cdb;
 }
 
 button:active {
+  margin: 7px 0 0 2px;
   box-shadow: none;
-}
-
-li {
-  margin-bottom: 5px;
 }
 
 footer {
@@ -77,6 +85,33 @@ footer > a {
   color: #BBBBBB;
 }
 
-.nicejob {
-  text-decoration: line-through;
+.sub-section {
+  margin-left: .5rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: .8rem;
+}
+
+.row-label {
+  width: 3.5em;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.row-description {
+  flex-grow: 1;
+}
+
+.bold {
+  margin: .5em 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.short-code, .output-container, pre {
+  background: #eff7f9;
 }

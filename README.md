@@ -1,27 +1,61 @@
-Welcome to the Glitch BETA
+img-find
 =========================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+------------------------------
 
-**Glitch** is the friendly commmunity where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+### An Image Search Abstraction Layer
 
-Find out more [about Glitch](https://glitch.com/about).
+* [https://img-find.glitch.me/](https://img-find.glitch.me/)
 
+Use this microservice to retrieve image search results in json. The six available parameters for this API are described below.
 
-Your Project
-------------
+### How To Use
 
-On the front-end,
-- edit `public/client.js`, `public/style.css` and `views/index.html`
-- drag in `assets`, like images or music, to add them to your project
+Append your search query parameters to the end of the API search endpoint `https://img-find.glitch.me/search?`  with all parameters separated by the symbol `&`.
 
-On the back-end,
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
+**Example Query**
 
+`https://img-find.glitch.me/search?offset=2&q=fancy penguins&size=large`
 
-Made by [Fog Creek](https://fogcreek.com/)
+**Example Output**
+
+```
+  [
+    {
+      "snippet": "Penguin cartoon – penguins at a fancy dress ...",
+      "url": "http://www.chrismadden.co.uk/images/cartoons ...",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/ ...",
+      "context": "http://www.chrismadden.co.uk/cartoon ..."
+    },
+    {
+      "snippet": "Kracker's Art Suite",
+      "url": "http://thestuffinthemargin.files.wordpress ...",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/ ...",
+      "context": "http://krackerartsuite.blogspot.com/"
+    }
+  ]
+```
+
+### Parameters
+
+|Parameter    |Description             |
+|-------------|------------------------|
+|q            |Query (string)         |
+|num |Number of search results to return per page. Default: 10 Max: 10 (integer)|
+|offset       |Page of search results to return. Default: 1 Max: 90 (integer)|
+|size|Img size: icon, small, medium, large, xlarge, xxlarge, or huge. (string)|
+|type|Img type. Including: bmp, gif, png, jpg, svg, pdf, ... (string)|
+|rights|Licensing values include: cc_publicdomain, cc_attribute, cc_sharealike, cc_noncommercial, cc_nonderived & combinations of these. (string)|
+
+### API Explorer Form
+
+You can use the form on the [API landing page](https://img-find.glitch.me/) to explore the API. Searches will return the query url and example output printed in formatted json.
+
+**Project Landing Page**
+
+* [https://img-find.glitch.me/](https://img-find.glitch.me/)
+
+-------------------------
+
+Made by [IMBurbank](https://fogcreek.com/)
 -------------------
-
-\ ゜o゜)ノ
