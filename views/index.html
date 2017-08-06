@@ -1,18 +1,15 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
+<!-- served from route in server.js -->
 
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
-<!-- pug: https://pugjs.org/ -->
-<!-- haml: http://haml.info/ -->
-<!-- hbs(handlebars): http://handlebarsjs.com/ -->
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to Glitch!</title>
-    <meta name="description" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <title>img-find</title>
+    <meta name="description" content="An image search abstraction layer">
+    <link id="favicon" 
+          rel="icon" 
+          href="https://cdn.glitch.com/5c795a21-9bc7-4a14-9c9d-409f90b57ca0%2Ffavicon.ico?1501962280101" 
+          type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,33 +18,126 @@
   <body>
     <header>
       <h1>
-        A Dream of the Future
+        img-find
       </h1>
     </header>
 
     <main>
-      <p class="bold">Oh hi,</p>
-      <p>Tell me your hopes and dreams:</p>
-      <form>
-        <input type="text" maxlength="100" placeholder="Dreams!">
+      <h3>
+        An Image Search Abstraction Layer
+      </h3>
+      <section class="sub-section">
+        <p>
+          Use this microservice to retrieve image search results in json.
+          The six available parameters for this API are described
+          in the API Explorer Form below.
+        </p>
+      </section>
+      
+      <h3>
+        How To Use
+      </h3>
+      <section class="sub-section">
+        <p>
+          Append your search query parameters to the end of the API search
+          endpoint <span class="short-code">https://img-find.glitch.me/search?</span> 
+          with all parameters separated by the symbol <span class="short-code">`&`</span>.
+        </p>
+        <p class="bold">Example Query</p>
+        <p>
+          <span class="short-code">
+            https://img-find.glitch.me/search?offset=2&q=fancy penguins&size=large
+          </span>
+        </p>
+        <p class="bold">Example Output</p>
+        <p>
+          <span>            
+<pre>  [
+    {
+      "snippet": "Penguin cartoon – penguins at a fancy dress ...",
+      "url": "http://www.chrismadden.co.uk/images/cartoons ...",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/ ...",
+      "context": "http://www.chrismadden.co.uk/cartoon ..."
+    },
+    {
+      "snippet": "Kracker's Art Suite",
+      "url": "http://thestuffinthemargin.files.wordpress ...",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/ ...",
+      "context": "http://krackerartsuite.blogspot.com/"
+    }
+  ]</pre>
+          </span>
+        </p>  
+      </section>
+      
+      <h3>
+        API Explorer Form
+      </h3>
+      <section class="sub-section">
+        <p>
+          You can use the form below to explore the API. Searches will return the 
+          query url and example output printed in formatted json.
+        </p>   
+      </section>
+      
+      <form id="search-form">
+        <div class="row">
+          <span class="row-child row-label">q = </span>
+          <input id="input-q" type="text" maxlength="140" placeholder="ex: unicorns in tophats">
+          <span class="row-child row-description">Query (string)</span>
+        </div>
+        <div class="row">
+          <span class="row-child row-label">num = </span>
+          <input id="input-num" type="text" maxlength="100" placeholder="ex: 2">
+          <span class="row-child row-description">
+            Number of search results to return per page. Default: 10 Max: 10 (integer)
+          </span>
+        </div>  
+        <div class="row">
+          <span class="row-child row-label">offset = </span>
+          <input id="input-offset" type="text" maxlength="100" placeholder="ex: 5">
+          <span class="row-child row-description">
+            Page of search results to return. Default: 1 Max: 90 (integer)
+          </span>
+        </div>
+        <div class="row">
+          <span class="row-child row-label">size = </span>
+          <input id="input-size" type="text" maxlength="100" placeholder="ex: medium">
+          <span class="row-child row-description">
+            Img size: icon, small, medium, large, xlarge, xxlarge, or huge. (string)
+          </span>
+        </div>      
+        <div class="row">
+          <span class="row-child row-label">type = </span>
+          <input id="input-type" type="text" maxlength="100" placeholder="ex: jpg">
+          <span class="row-child row-description">
+            Img type. Including: bmp, gif, png, jpg, svg, pdf, ... (string)
+          </span>
+        </div>     
+        <div class="row">
+          <span class="row-child row-label">rights = </span>
+          <input id="input-rights" type="text" maxlength="100" placeholder="ex: cc_publicdomain">
+          <span class="row-child row-description">
+            Licensing values include: cc_publicdomain, cc_attribute, cc_sharealike, 
+            cc_noncommercial, cc_nonderived & combinations of these. (string)
+          </span>
+        </div>       
         <button type="submit">Submit</button>
       </form>
-      <section class="dreams">
-        <ul id="dreams">
-        </ul>
+      
+      <section class="output-container">
+        <p id ="request"><!-- Request string injected here --></p>
+        <p id ="output"><!-- Form search output injected here --></p>
       </section>
     </main>
 
     <footer>
-      <a href="https://glitch.com">
-        Remix this in Glitch
+      <a href="https://github.com/IMBurbank/image-search-json">
+        Github Repo
       </a>
     </footer>
 
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
+    <!-- Scripts -->
     <script src="/client.js"></script>
 
   </body>

@@ -1,28 +1,31 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-
-  "name": "my-glitch-app",
-  "version": "0.0.1",
-  "description": "What am I about?",
+  "name": "img-find",
+  "version": "1.0.0",
+  "description": "An Image Search Abstraction Layer",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "axios": "^0.16.2",
+    "mongodb": "^2.2.30"
   },
   "engines": {
-    "node": "8.x"
+    "node": "8.1.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/welcome-project"
+    "url": "https://github.com/IMBurbank/img-find"
   },
   "license": "MIT",
   "keywords": [
     "node",
     "glitch",
-    "express"
+    "express",
+    "mongodb",
+    "es8",
+    "image-search-abstraction",
+    "glitch",
+    "freecodecamp"
   ]
 }
